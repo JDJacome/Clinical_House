@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/custom login.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true" style="display: none;">
+
+        <div class="signup">
+            <form action="proyecto/controller/gestion/sesión.php" method="POST">
+                <label style="text-align: center; color: #000;" for="chk" aria-hidden="true">INICIO DE SESIÓN</label>
+                <input type="text" name="txt" placeholder="Nombre de Usuario" required="">
+                <input type="Password" name="pswd" placeholder="Contraseña" required="">
+                <button style="justify-content: center; background-color: #3386c9;">Iniciar Sesión</button>
+            </form>
+
+        </div>
+
+
+    </div>
+    
+</body>
+</html>
