@@ -119,19 +119,12 @@
                 Contabilidad
               </a>
             </li>
-            <!--
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+            <li class="nav-item">
+            <a class="nav-link" href="view/médico/medico.php">
               <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reports
+             Médicos
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Integrations
-            </a>
-          </li> -->
           </ul>
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
