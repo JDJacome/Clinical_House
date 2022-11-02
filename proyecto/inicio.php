@@ -169,8 +169,7 @@
 
           </div>
         </div>
-
-        <div>HOLA MUNDO</div>
+        
         <?php
 
         include("model/conexion.php");
