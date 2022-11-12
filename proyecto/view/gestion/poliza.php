@@ -197,191 +197,56 @@
         </div>
 
         <div class="container">
-          <form class="p-4" method="POST" action="../../controller/gestion/poliza.php">
-            <div class="table-responsive" id="tabla_responsiva">
-              <table class="table table-light" style="width: 2200px;">
-
-                <thead>
-                  <tr>
-                    <th class="text-center" style="width: 700px; color: #50b4fb;" scope="col">Nombre</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Identificación</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Salario Básico</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Auxilio de Transporte</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Horas Laboradas al mes</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Dias Laborados</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Sueldo mes</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">N° horas Extras</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Horas Extras</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Recargo Nocturno</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Recargo Dominical</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Recargo Dominical Nocturno</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Total Devengado</th>
-                    <th class="text-center" style="width: 150px; color: #50b4fb;" scope="col">Salud</th>
-                    <th class="text-center" style="width: 150px; color: #50b4fb;" scope="col">Pensión</th>
-                    <th class="text-center" style="width: 150px; color: #50b4fb;" scope="col">Poliza Fepazde</th>
-                    <th class="text-center" style="width: 150px; color: #50b4fb;" scope="col">Bonificación PTE VM</th>
-                    <th class="text-center" style="width: 150px; color: #50b4fb;" scope="col">Total Deducido</th>
-                    <th class="text-center" style="width: 220px; color: #50b4fb;" scope="col">Neto a Pagar</th>
-                  </tr>
-                </thead>
-
-                <body>
-
-                  <?php
-                  include("../../model/conexion.php");
-
-                  $sql = $bd->query("SELECT * FROM auxiliar");
-                  $rsql = $sql->fetchall(PDO::FETCH_OBJ);
-
-                  foreach ($rsql as $datos) {
-                    $GLOBALS['salario'] = $datos->Salario_básico;
+          <form name= "mespoliza" class="p-4" method="POST" action="">
+          <div class="form-group">
+                <select class="form-control" id="mesesid" name="id" onchange="tabla_poliza()">
+                  <option value=" ">Seleccione el mes</option>
+                  <?PHP
+                  include_once("../../model/conexion.php");
+                  $model = $bd->query("SELECT * FROM mes");
+                  $modelo = $model->fetchAll(PDO::FETCH_OBJ);
+                  foreach ($modelo as $datos_mes) {
                   ?>
-                    <tr>
-                      <td><input type="text" class="form-control" name="nombre<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos->Nombre . " " . $datos->Apellido ?>"></td>
-                      <td><input type="text" class="form-control" name="cedula<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos->Cédula ?>"></td>
-                      <td><input type="text" class="form-control" name="salario<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos->Salario_básico ?>"></td>
-                      <td><input type="text" class="form-control" name="transporte<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos->Auxilio_transporte ?>"></td>
-
-                      <?php
-                      $valor_extras = 0;
-                      $valor_nocturno = 0;
-                      $valor_dominical = 0;
-                      $valor_nocturno_dominical = 0;
-                      $horas_nocturnas = 0;
-                      $horas_dominical = 0;
-                      $horas_nocturnas_dominical = 0;
-                      $horas_extras = 0;
-                      $extras = 0;
-                      $total_extras = 0;
-                      $total_nocturno = 0;
-                      $total_dominical = 0;
-                      $total_nocturno_dominical = 0;
-                      $contador = 0;
-                      $contador_horas = 0;
-                      $contador_dias = 0;
-                      $sql2 = $bd->query("SELECT * FROM asignación where id_auxiliar = $datos->Cédula AND turno NOT in(' ')");
-                      $rsql2 = $sql2->fetchall(PDO::FETCH_OBJ);
-
-                      foreach ($rsql2 as $datos2) {
-
-                        $number = $datos2->dia;
-                        $turno = strtoupper($datos2->turno);
-
-                        $formato = $bd->query("SELECT * FROM horas");
-                        $r_formato = $formato->fetchall(PDO::FETCH_OBJ);
-
-                        foreach ($r_formato as $dato_f) {
-
-                          if ($dato_f->Formato == $turno) {
-
-                            $sql3 = $bd->query("SELECT * FROM dias where número = $number AND id_mes = 1");
-                            $rsql3 = $sql3->fetchall(PDO::FETCH_OBJ);
-
-
-                            foreach ($rsql3 as $datos3) {
-
-                              $semana = $datos3->dia;
-
-                              if ($semana == 'Domingo' and $dato_f->Formato == 'N') {
-                                $horas_nocturnas_dominical = $horas_nocturnas_dominical + $dato_f->Horas;
-                              } else if ($semana != 'Domingo' and $dato_f->Formato == 'N') {
-                                $horas_nocturnas = $horas_nocturnas + $dato_f->Horas;
-                              } elseif ($semana == 'Domingo' and $dato_f->Formato != 'N') {
-                                $horas_dominical = $horas_dominical + $dato_f->Horas;
-                              }
-                            }
-
-                            $contador = $contador + $dato_f->Horas;
-                          }
-                        }
-                        $contador_dias = count($rsql2);
-                      }
-
-                      if ($contador >= 192) {
-                        $extras = $contador - 192;
-                        $contador_horas = 192;
-                        $valor_extras = ($GLOBALS['salario'] / 240) * 1.25;
-                        $horas_extras = $extras * $valor_extras;
-                      } else {
-                        $contador_horas = $contador;
-                      }
-
-
-
-
-                      if ($horas_nocturnas > 0) {
-                        $valor_nocturno = ($GLOBALS['salario'] / 240) * 0.35;
-                        $total_nocturno = $valor_nocturno * $horas_nocturnas;
-                      }
-
-
-
-                      if ($horas_dominical > 0) {
-                        $valor_dominical = ($GLOBALS['salario'] / 240) * 0.75;
-                        $total_dominical = $valor_dominical * $horas_dominical;
-                      }
-
-                      if ($horas_nocturnas_dominical > 0) {
-                        $valor_nocturno_dominical = ($GLOBALS['salario'] / 240) * 1.1;
-                        $total_nocturno_dominical = $valor_nocturno_dominical * $horas_nocturnas_dominical;
-                      }
-
-                      ?>
-                      <td><input type="text" class="form-control" name="n°horas<?php echo $datos->Cédula ?>" autofocus value="<?php echo $contador_horas ?>"></td>
-                      <td><input type="text" class="form-control" name="d_trabajo<?php echo $datos->Cédula ?>" autofocus value="<?php echo $contador_dias ?>"></td>
-                      <td><input type="text" class="form-control" name="sueldo_mes<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos->Salario_básico + $datos->Auxilio_transporte ?>"></td>
-                      <td><input type="text" class="form-control" name="horas_extra<?php echo $datos->Cédula ?>" autofocus value="<?php echo $extras ?>"></td>
-                      <td><input type="text" class="form-control" name="horas_extra<?php echo $datos->Cédula ?>" autofocus value="<?php echo $horas_extras ?>"></td>
-                      <td><input type="text" class="form-control" name="t_nocturno<?php echo $datos->Cédula ?>" autofocus value="<?php echo $total_nocturno ?>"></td>
-                      <td><input type="text" class="form-control" name="t_dominical<?php echo $datos->Cédula ?>" autofocus value="<?php echo $total_dominical ?>"></td>
-                      <td><input type="text" class="form-control" name="t_n_dominical<?php echo $datos->Cédula ?>" autofocus value="<?php echo $total_nocturno_dominical ?>"></td>
-                      <td><input type="text" class="form-control" name="devengado<?php echo $datos->Cédula ?>" autofocus value="<?php echo $total_nocturno_dominical + $total_dominical + $total_nocturno + $horas_extras + ($datos->Salario_básico + $datos->Auxilio_transporte) ?>"></td>
-
-                      <?php
-                      $datos4 = $bd->query("SELECT * FROM deducido");
-                      $rsql4 = $datos4->fetchall(PDO::FETCH_OBJ);
-                      foreach ($rsql4 as $datos4) {
-                      ?>
-                        <td><input type="text" class="form-control" name="salud<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos4->Salud ?>"></td>
-                        <td><input type="text" class="form-control" name="pension<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos4->Pensión ?>"></td>
-
-                      <?php
-                      }
-                      ?>
-                      <td><input type="text" class="form-control" name="poliza<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos->Poliza_Fepazde ?>"></td>
-                      <td><input type="text" class="form-control" name="bonificacion<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos->Bonificación_PTEVM ?>"></td>
-                      <td><input type="text" class="form-control" name="deducido<?php echo $datos->Cédula ?>" autofocus value="<?php echo $datos4->Salud + $datos4->Pensión ?>"></td>
-                      <td><input type="text" class="form-control" name="neto<?php echo $datos->Cédula ?>" autofocus value="<?php echo ($total_nocturno_dominical + $total_dominical + $total_nocturno + $horas_extras + ($datos->Salario_básico + $datos->Auxilio_transporte)) - $datos->Poliza_Fepazde - $datos->Bonificación_PTEVM - $datos4->Salud - $datos4->Pensión ?>"></td>
-                      <?php
-
-                      ?>
-                    </tr>
-
-
+                    <option value="<?php echo $datos_mes->id_mes ?>"><?php echo $datos_mes->mes ?></option>");
                   <?php
-
                   }
                   ?>
+                </select>
 
-                </body>
-              </table>
-            </div>
-
-
-
-            <div class="form-footer">
-              <div class="d-grid">
-                <input type="hidden" name="submit" value="1">
-                <input type="submit" class="btn text-white fs-4" style="background-color: #3b9dfb;" value="Registrar">
               </div>
-            </div>
-          </form>
+          
         </div>
+        </form>
+        <hr>
+            <div id="tabla_poliza">
+            </div>
+            
 
+       
 
       </main>
     </div>
   </div>
+
+  <script type="text/javascript">
+
+  function tabla_poliza(){
+
+      var id_mes;
+
+      id_mes = document.mespoliza.id[document.mespoliza.id.selectedIndex].value;
+
+      $.ajax({
+        type: "POST",
+        url: "../../controller/gestion/tabla_poliza.php",
+        data: "id=" + id_mes,
+        success: function(r) {
+          $('#tabla_poliza').html(r);
+        }
+      })
+  }
+
+</script>
 
   <script src="../../../assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

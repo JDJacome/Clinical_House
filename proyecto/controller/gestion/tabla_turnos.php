@@ -365,21 +365,24 @@ include("../../model/conexion.php");
 $tabla.="
 
   </tbody>
-</table>
+  </table>
 </div>
 <div>
 
 <div class='form-footer'>
-            <div class='d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3'>
-                <input type='hidden' name='contador' value='$id_paciente,$id_mes,";
-                foreach($data as $dat_aux){
-                    $tabla.="$dat_aux,";
-                }
+<div class='d-grid pt-3 pb-2 mb-3'>
+  <input type='hidden' name='submit' value='$id_paciente,$id_mes,";
+        
+        foreach($data as $dat_aux){
+            $tabla.="$dat_aux,";
+        }
+$tabla.="
+  '>
+  <input type='submit' class='btn text-white fs-4' style='width: 200px; background-color: #3b9dfb;' value='Modificar'>
+</div>
+</div>
 
-                
-                $tabla.="'>
-                <input type='submit' class='btn text-white fs-5' style='background-color: #3b9dfb' value='Modificar'>
-                <div class='btn-toolbar mb-2 mb-md-0'>  
+
 </form>
 ";
 

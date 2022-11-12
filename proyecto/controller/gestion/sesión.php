@@ -11,7 +11,7 @@ if($usuario == 'root'){
     $rsql = $sql->fetchall(PDO::FETCH_OBJ);
 
     if(count($rsql) > 0){
-        header("Location: ../../inicio.php");
+        header("Location: ../../modulos.html");
     }else{
         header("Location: ../../../index.html");
     }

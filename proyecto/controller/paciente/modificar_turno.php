@@ -1,12 +1,15 @@
 <?php
-
-$paso1 = explode(",",$_POST['contador']);
-$ids = array_filter($paso1);
+$paso1 = explode(",",$_POST['submit']);
+$port = count($paso1) - 1;
+for($ñ = 0; $ñ < $port; $ñ++){
+    $ids[] = $paso1[$ñ];
+}
 $id_paciente = $ids[0];
 $id_mes = $ids[1];
 $contador_ids = count($ids);
 include('../../model/paciente.php');
 
+var_dump($ids);
 
 $sql = $GLOBALS['bd']->query("SELECT * FROM asignación where id_mes = $id_mes AND id_paciente = $id_paciente");
 $rsql = $sql->fetchall(PDO::FETCH_OBJ);

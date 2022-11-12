@@ -119,12 +119,6 @@
                 Contabilidad
               </a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="view/médico/medico.php">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-             Médicos
-            </a>
-          </li>
           </ul>
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
@@ -176,71 +170,98 @@
 
         $mes = $bd->query("SELECT * FROM asignación");
         $rmes = $mes->fetchall(PDO::FETCH_OBJ);
-
         foreach ($rmes as $datos_mes) {
           $id_mes = $datos_mes->id_mes;
         }
 
-
-
+        $contador_paciente = 0;
+        $contador_datos = 0;
+        $apellidos = [];
+        $nombres = [];
+        $cedulas = [];
         $sql = $bd->query("SELECT * FROM Paciente");
         $rsql = $sql->fetchall(PDO::FETCH_OBJ);
 
         foreach ($rsql as $datos) {
+
           $sql2 = $bd->query("SELECT * FROM asignación where id_paciente = $datos->Cédula AND id_mes = $id_mes");
           $rsql2 = $sql2->fetchall(PDO::FETCH_OBJ);
           $contador_paciente = count($rsql2);
 
           if ($contador_paciente > 0) {
+            $contador_paciente = 0;
           } else {
-
-            $v_mes = $bd->query("SELECT * FROM mes WHERE id_mes = $id_mes");
-            $r_vmes = $v_mes->fetchall(PDO::FETCH_OBJ);
-
-            foreach ($r_vmes as $d_vmes) {
-              echo "<div class='h5'>En el mes " . $d_vmes->mes . ", falta por asignar turnos a los pacientes: </div>";
-              echo "<hr>";
-            }
-
-
-            $sql3 = $bd->query("SELECT * FROM Paciente WHERE Cédula = $datos->Cédula AND Horas > 0");
-            $rsql3 = $sql3->fetchall(PDO::FETCH_OBJ);
-
-            $contador_p = count($rsql3);
-
-            if ($contador_p > 0) {
-              $tabla = "
-              <div class='container'>
-               <div class='table-responsive' id='tabla_responsiva'>
-                <table class='table'>
-                  <thead  style='background-color: #dcedfb;'>
-                    <tr>
-                      <th scope='col'>Cédula</th>
-                      <th scope='col'>Nombre</th>
-                      <th scope='col'>Apellido</th>
-                    </tr>
-                  </thead>
-                <tbody class='table-group-divider' style='background-color: #fff;'>";
-                foreach ($rsql3 as $datos3) {
-                  $tabla .= "
-                    <tr>
-                      <th scope='row'>$datos3->Cédula </th>
-                      <td>$datos3->Nombre </td>
-                      <td>$datos3->Apellido </td>
-                    </tr>";
-                }
-
-              $tabla .= "
-                </tbody>
-                </table>
-              </div>
-            </div>";
-
-              echo $tabla;
-            }
+            $contador_paciente = 1;
           }
         }
 
+        if($contador_paciente == 1){
+
+          $v_mes = $bd->query("SELECT * FROM mes WHERE id_mes = $id_mes");
+          $r_vmes = $v_mes->fetchall(PDO::FETCH_OBJ);
+
+          foreach ($r_vmes as $d_vmes) {
+            echo "<div class='h5'>En el mes " . $d_vmes->mes . ", falta por asignar turnos a los pacientes: </div>";
+            echo "<hr>";
+          }
+
+          foreach($rsql as $datos4){
+
+          $sql3 = $bd->query("SELECT * FROM Paciente WHERE Cédula = $datos4->Cédula AND Horas > 0");
+          $rsql3 = $sql3->fetchall(PDO::FETCH_OBJ);
+          
+          foreach ($rsql3 as $datos3){
+
+            $sql4 = $bd->query("SELECT * FROM asignación where id_paciente = $datos3->Cédula and id_mes = $id_mes");
+            $rsql4 = $sql4->fetchall(PDO::FETCH_OBJ);
+            $c_datos = count($rsql4);
+            if($c_datos == 0){
+              $cedulas[] = $datos3->Cédula;
+              $nombres[] = $datos3->Nombre;
+              $apellidos[] = $datos3->Apellido;
+            }else{
+
+            }
+            
+          }
+
+          $contador_datos = count($apellidos);
+          
+          }
+
+          
+        
+            $tabla = "
+            <div class='container'>
+             <div class='table-responsive' id='tabla_responsiva'>
+              <table class='table'>
+                <thead  style='background-color: #dcedfb;'>
+                  <tr>
+                    <th scope='col'>Cédula</th>
+                    <th scope='col'>Nombre</th>
+                    <th scope='col'>Apellido</th>
+                  </tr>
+                </thead>
+              <tbody class='table-group-divider' style='background-color: #fff;'>";
+              for($i = 0; $i < $contador_datos; $i ++){
+                $tabla .= "
+                  <tr>
+                    <th scope='row'>$cedulas[$i] </th>
+                    <td>$nombres[$i] </td>
+                    <td>$apellidos[$i] </td>
+                  </tr>";
+              }
+
+            $tabla .= "
+              </tbody>
+              </table>
+            </div>
+          </div>";
+
+            echo $tabla;
+          }
+        
+        
         ?>
 
       </main>

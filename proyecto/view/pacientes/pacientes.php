@@ -140,12 +140,6 @@
                 Contabilidad
               </a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="../médico/medico.php">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-             Médicos
-            </a>
-          </li>
           </ul>
 
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
@@ -422,8 +416,7 @@
 
   <script type="text/javascript">
     $('#mesesid').prop('disabled', 'disabled');
-    document.formulario1.pacientesid.options[0].selected = true;
-    document.formulario2.mesesid.options[0].selected = true;
+    
 
     document.getElementById('exampleModal').setAttribute('data-bs-backdrop', "static");
     document.getElementById('exampleModal').setAttribute('data-bs-keyboard', "false");
@@ -439,7 +432,7 @@
 
     document.getElementById('tabla_turnos').addEventListener('hidden.bs.modal', function(event) {
       document.getElementById('tabla_turnos').style.zIndex = -1;
-      document.formulario2.mesesid.options[0].selected = true;
+      
       $('#tabla_trn').html(' ');
     })
 

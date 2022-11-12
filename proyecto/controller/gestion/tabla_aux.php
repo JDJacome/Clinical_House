@@ -1,6 +1,7 @@
 <?php
 $paciente = $_POST['id'];
 
+
 include("../../model/conexion.php");
 
 if($paciente == 0){
