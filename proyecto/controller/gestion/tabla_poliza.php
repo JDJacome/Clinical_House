@@ -187,12 +187,18 @@ if($id == 0){
           </body>
         </table>
       </div>
+       <div class='form-footer'>
+      <div class='d-grid pt-3 pb-2 mb-3'>
+        <input type='hidden' name='submit' value='$id'>
+        <input type='submit' class='btn text-white fs-4' style='width: 200px; background-color: #3b9dfb;' value='Modificar'>
+      </div>
+      </div>
+    </form>
 ";
 
 echo $tabla;
 
 
 }
-
 
 ?>
