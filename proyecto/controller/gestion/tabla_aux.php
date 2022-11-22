@@ -34,7 +34,7 @@ $tabla="
 
         foreach($rsql2 as $pac){
             $tabla.="
-            <th>$pac->Nombre  $pac->Apellido</th>";
+            <th>$pac->Nombre</th>";
         }
 
         $sql3 = $bd->query("SELECT * FROM auxiliar WHERE Cédula = $ap->id_aux");
@@ -42,7 +42,7 @@ $tabla="
 
         foreach($rsql3 as $aux){
             $tabla.="
-            <th>$aux->Nombre  $aux->Apellido</th>
+            <th>$aux->Nombre</th>
             <th><a href='desvincular.php?id=$paciente,$aux->Cédula'><button class='btn text-white' style='background-color: #DB1F00;'>Desvincular</button></a><th>
             ";
         }

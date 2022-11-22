@@ -72,7 +72,7 @@ include("../../model/conexion.php");
         foreach($rsql2 as $datos2){
 
             $tabla.="<tr>
-                 <th>$datos2->Nombre $datos2->Apellido</th>
+                 <th>$datos2->Nombre</th>
             ";
 
             $sql3 = $bd->query("SELECT * FROM asignación where id_auxiliar = $aux and id_mes = $id_mes");
@@ -143,7 +143,7 @@ include("../../model/conexion.php");
     
                     $auxiliares[] = $datos5->Cédula;
                     $tabla.="<tr>
-                            <th>$datos5->Nombre $datos5->Apellido</th>
+                            <th>$datos5->Nombre</th>
                             ";
                     for($i = 0; $i < $contador; $i++){
                         $tabla.="
@@ -183,7 +183,7 @@ include("../../model/conexion.php");
                 foreach($rsql5 as $datos5){
                     $auxiliares[] = $datos5->Cédula;
                     $tabla.="<tr>
-                            <th>$datos5->Nombre $datos5->Apellido</th>
+                            <th>$datos5->Nombre</th>
                             ";
                     for($i = 0; $i < $contador; $i++){
 
@@ -222,7 +222,7 @@ include("../../model/conexion.php");
                 foreach($rsql5 as $datos5){
                     $auxiliares[] = $datos5->Cédula;
                     $tabla.="<tr>
-                            <th>$datos5->Nombre $datos5->Apellido</th>
+                            <th>$datos5->Nombre</th>
                             ";
                     for($i = 0; $i < $contador; $i++){
                         $tabla.="
@@ -261,7 +261,7 @@ include("../../model/conexion.php");
                 foreach($rsql5 as $datos5){
                     $auxiliares[] = $datos5->Cédula;
                     $tabla.="<tr>
-                            <th>$datos5->Nombre $datos5->Apellido</th>
+                            <th>$datos5->Nombre</th>
                             ";
                     for($i = 0; $i < $contador; $i++){
                         $tabla.="
@@ -300,7 +300,7 @@ include("../../model/conexion.php");
                 foreach($rsql5 as $datos5){
                     $auxiliares[] = $datos5->Cédula;
                     $tabla.="<tr>
-                            <th>$datos5->Nombre $datos5->Apellido</th>
+                            <th>$datos5->Nombre</th>
                             ";
 
                     for($i = 0; $i < $contador; $i++){
@@ -340,7 +340,7 @@ include("../../model/conexion.php");
                 foreach($rsql5 as $datos5){
                     $auxiliares[] = $datos5->Cédula;
                     $tabla.="<tr>
-                            <th>$datos5->Nombre $datos5->Apellido</th>
+                            <th>$datos5->Nombre</th>
                             ";
 
                     for($i = 0; $i < $contador; $i++){
@@ -430,7 +430,7 @@ $tabla="
                 $auxiliares[] = $datos2->Cédula;
 
                 $tabla.="<tr>
-                        <th>$datos2->Nombre $datos2->Apellido</th>
+                        <th>$datos2->Nombre</th>
                         ";
 
                     for($i = 0; $i < $contador; $i++){

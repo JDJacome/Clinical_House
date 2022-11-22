@@ -4,11 +4,11 @@
 
     class auxiliar{
 
-        public function registrar_auxiliar($cedula,$nombre,$apellido,$telefono,$formato,$horas){
+        public function registrar_auxiliar($cedula,$nombre,$telefono,$formato,$horas){
 
-            $sql = $GLOBALS['bd']->prepare("INSERT INTO auxiliar (Cédula,Nombre,Apellido,Teléfono,Formato,Horas) VALUES (?,?,?,?,?,?)");
+            $sql = $GLOBALS['bd']->prepare("INSERT INTO auxiliar (Cédula,Nombre,Teléfono,Formato,Horas) VALUES (?,?,?,?,?)");
 
-            $rsql = $sql->execute([$cedula,$nombre,$apellido,$telefono,$formato,$horas]);
+            $rsql = $sql->execute([$cedula,$nombre,$telefono,$formato,$horas]);
 
             if($rsql == 1){
                 header('Location: ../../view/auxiliares/auxiliares.php?mensaje=registrado');

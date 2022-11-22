@@ -48,7 +48,7 @@ if($id == 0){
               $GLOBALS['salario'] = $datos->Salario_básico;
             
              $tabla.="<tr>
-                <td><input type='text' class='form-control' name='nombre $datos->Cédula' autofocus value=' $datos->Nombre  $datos->Apellido'></td>
+                <td><input type='text' class='form-control' name='nombre $datos->Cédula' autofocus value=' $datos->Nombre'></td>
                 <td><input type='text' class='form-control' name='cedula $datos->Cédula' autofocus value=' $datos->Cédula'></td>
                 <td><input type='text' class='form-control' name='salario $datos->Cédula' autofocus value=' $datos->Salario_básico'></td>
                 <td><input type='text' class='form-control' name='transporte $datos->Cédula' autofocus value='$datos->Auxilio_transporte'></td>

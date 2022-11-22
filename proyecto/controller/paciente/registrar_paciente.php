@@ -31,4 +31,6 @@ include_once('../../model/paciente.php');
 $paciente = new paciente();
 $paciente->registrar_paciente($id,$nombre,$apellido,$sexo,$direccion,$barrio,$zona,$telefono,$eps,$aseguradora,$criterio,$tutela,$horas,$gams,$quimico);
 
+header("Location: ../../view/pacientes/pacientes.php?mensaje=registrado");
+
 ?>

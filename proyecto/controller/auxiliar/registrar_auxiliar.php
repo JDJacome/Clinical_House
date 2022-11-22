@@ -88,7 +88,7 @@ include('../../model/auxiliar.php');
 
 $auxiliar = new auxiliar;
 
-$auxiliar->registrar_auxiliar($_POST['id'],$_POST['nombre'],$_POST['apellido'],$_POST['telefono'],$formato,$horas);
+$auxiliar->registrar_auxiliar($_POST['id'],$_POST['nombre'],$_POST['telefono'],$formato,$horas);
 
 
 

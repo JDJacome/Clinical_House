@@ -116,75 +116,57 @@
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3 sidebar-sticky">
           <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="../../inicio_asignación.html">
-                <span data-feather="home" class="align-text-bottom"></span>
-                Inicio
-              </a>
+            <li class="py-3"></li>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="../../../assets/home.png" style="width: 30px;" class="list__img">
+                    <a href="../../inicio.php" class="nav__link">Inicio</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../auxiliares/auxiliares_asignación.php">
-                <span data-feather="file" class="align-text-bottom"></span>
-                Auxiliares
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="pacientes_asignación.php">
-                <i class="bi bi-person-circle"></i>
-                Pacientes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="bi bi-clipboard2-data"></span>
-                Contabilidad
-              </a>
-            </li>
-            <!--
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Integrations
-            </a>
-          </li> -->
-          </ul>
 
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-            <span>Saved reports</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-              <span data-feather="plus-circle" class="align-text-bottom"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/meses.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Meses
-              </a>
+            <li class="list__item">
+                <div class="list__button">
+                <img src="../../../assets/medico.svg" style="width: 30px;" class="list__img">
+                    <a href="../auxiliares/auxiliares.php" class="nav__link">Auxiliares</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/poliza.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Poliza
-              </a>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="../../../assets/patient.png" style="width: 30px;" class="list__img">
+                    <a href="pacientes.php" class="nav__link">Pacientes</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/horas.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Horas
-              </a>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="../../../assets/stats.svg" style="width: 30px;" class="list__img">
+                    <a href="#" class="nav__link">Contabilidad</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/deducido.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Deducido
-              </a>
+            <li class="list__item list__item--click">
+                <div class="list__button list__button--click">
+                    <img src="../../../assets/dashboard.svg" style="width: 30px;" class="list__img">
+                    <a href="#" class="nav__link">Parámetros</a>
+                    <img src="../../../assets/arrow.svg" class="list__arrow">
+                </div>
+
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="../gestion/meses.php" class="nav__link nav__link--inside">Meses</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="../gestion/poliza.php" class="nav__link nav__link--inside">Poliza</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="../gestion/horas.php" class="nav__link nav__link--inside">Horas</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="../gestion/deducido.php" class="nav__link nav__link--inside">Deducido</a>
+                    </li>
+                </ul>
+
             </li>
           </ul>
         </div>

@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <script src="../../js/jquery.min.js"></script>
-
+  <link rel="stylesheet" href="../../estilos.css">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link href="../../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +24,10 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       user-select: none;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
     }
 
     @media (min-width: 768px) {
@@ -95,8 +99,8 @@
 
 <body>
 
-  <header class="navbar navbar-light sticky-top flex-md-nowrap p-0 shadow" style="background-color: #e3f2fd;">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="background-color: #bddffa;">Gestion IPSCH</a>
+  <header class="navbar navbar-light sticky-top flex-md-nowrap p-0 shadow" style="background-color: #fff;">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-4" href="#" style="background-color: #bddffa;">Gestion IPSCH</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -110,78 +114,60 @@
 
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
         <div class="position-sticky pt-3 sidebar-sticky">
           <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="../../inicio.php">
-                <span data-feather="home" class="align-text-bottom"></span>
-                Inicio
-              </a>
+            <li class="py-3"></li>
+            <li class="list__item">
+              <div class="list__button">
+                <img src="../../../assets/home.png" style="width: 30px;" class="list__img">
+                <a href="../../inicio.php" class="nav__link">Inicio</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../auxiliares/auxiliares.php">
-                <span data-feather="file" class="align-text-bottom"></span>
-                Auxiliares
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../pacientes/pacientes.php">
-                <i class="bi bi-person-circle"></i>
-                Pacientes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="bi bi-clipboard2-data"></span>
-                Contabilidad
-              </a>
-            </li>
-            <!--
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Integrations
-            </a>
-          </li> -->
-          </ul>
 
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-            <span>Saved reports</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-              <span data-feather="plus-circle" class="align-text-bottom"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="meses.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Meses
-              </a>
+            <li class="list__item">
+              <div class="list__button">
+                <img src="../../../assets/medico.svg" style="width: 30px;" class="list__img">
+                <a href="../auxiliares/auxiliares.php" class="nav__link">Auxiliares</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="poliza.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Poliza
-              </a>
+            <li class="list__item">
+              <div class="list__button">
+                <img src="../../../assets/patient.png" style="width: 30px;" class="list__img">
+                <a href="../pacientes/pacientes.php" class="nav__link">Pacientes</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="horas.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Horas
-              </a>
+            <li class="list__item">
+              <div class="list__button">
+                <img src="../../../assets/stats.svg" style="width: 30px;" class="list__img">
+                <a href="#" class="nav__link">Contabilidad</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="deducido.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Deducido
-              </a>
+            <li class="list__item list__item--click">
+              <div class="list__button list__button--click">
+                <img src="../../../assets/dashboard.svg" style="width: 30px;" class="list__img">
+                <a href="#" class="nav__link">Parámetros</a>
+                <img src="../../../assets/arrow.svg" class="list__arrow">
+              </div>
+
+              <ul class="list__show">
+                <li class="list__inside">
+                  <a href="meses.php" class="nav__link nav__link--inside">Meses</a>
+                </li>
+
+                <li class="list__inside">
+                  <a href="poliza.php" class="nav__link nav__link--inside">Poliza</a>
+                </li>
+
+                <li class="list__inside">
+                  <a href="horas.php" class="nav__link nav__link--inside">Horas</a>
+                </li>
+
+                <li class="list__inside">
+                  <a href="deducido.php" class="nav__link nav__link--inside">Deducido</a>
+                </li>
+              </ul>
+
             </li>
           </ul>
         </div>
@@ -197,40 +183,48 @@
         </div>
 
         <div class="container">
-          <form name= "mespoliza" class="p-4" method="POST" action="">
-          <div class="form-group">
-                <select class="form-control" id="mesesid" name="id" onchange="tabla_poliza()">
-                  <option value=" ">Seleccione el mes</option>
-                  <?PHP
-                  include_once("../../model/conexion.php");
-                  $model = $bd->query("SELECT * FROM mes");
-                  $modelo = $model->fetchAll(PDO::FETCH_OBJ);
-                  foreach ($modelo as $datos_mes) {
-                  ?>
-                    <option value="<?php echo $datos_mes->id_mes ?>"><?php echo $datos_mes->mes ?></option>");
-                  <?php
-                  }
-                  ?>
-                </select>
+          <form name="mespoliza" class="p-4" method="POST" action="">
+            <div class="form-group">
+              <select class="form-control" id="mesesid" name="id" onchange="tabla_poliza()">
+                <option value=" ">Seleccione el mes</option>
+                <?PHP
+                include_once("../../model/conexion.php");
+                $model = $bd->query("SELECT * FROM mes");
+                $modelo = $model->fetchAll(PDO::FETCH_OBJ);
+                foreach ($modelo as $datos_mes) {
+                ?>
+                  <option value="<?php echo $datos_mes->id_mes ?>"><?php echo $datos_mes->mes ?></option>");
+                <?php
+                }
+                ?>
+              </select>
 
-              </div>
-          
+            </div>
+
         </div>
         </form>
         <hr>
-            <div id="tabla_poliza">
-            </div>
-            
+        <div id="tabla_poliza">
+        </div>
 
-       
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+          $(document).ready(function() {
+            $('#example').DataTable();
+          });
+        </script>
+        <script src="../../main.js"></script>
 
       </main>
     </div>
   </div>
 
   <script type="text/javascript">
-
-  function tabla_poliza(){
+    function tabla_poliza() {
 
       var id_mes;
 
@@ -244,9 +238,8 @@
           $('#tabla_poliza').html(r);
         }
       })
-  }
-
-</script>
+    }
+  </script>
 
   <script src="../../../assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

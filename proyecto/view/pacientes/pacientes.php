@@ -11,6 +11,9 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../../estilos.css">
   <script src="../../js/jquery.min.js"></script>
 
 
@@ -84,6 +87,12 @@
 
     }
 
+    body{
+      font-family: 'Poppins', sans-serif;
+    }
+
+
+
     #tabla_turnos {
 
       z-index: -1;
@@ -98,8 +107,8 @@
 
 <body>
 
-  <header class="navbar navbar-light sticky-top flex-md-nowrap p-0 shadow" style="background-color: #e3f2fd;">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#" style="background-color: #bddffa;">Gestion IPSCH</a>
+<header class="navbar navbar-light sticky-top flex-md-nowrap p-0 shadow" style="background-color: #fff;">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-4" href="#" style="background-color: #bddffa;">Gestion IPSCH</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -113,65 +122,62 @@
 
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
         <div class="position-sticky pt-3 sidebar-sticky">
           <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="../../inicio.php">
-                <span data-feather="home" class="align-text-bottom"></span>
-                Inicio
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../auxiliares/auxiliares.php">
-                <span data-feather="file" class="align-text-bottom"></span>
-                Auxiliares
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="pacientes.php">
-                <i class="bi bi-person-circle"></i>
-                Pacientes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="bi bi-clipboard2-data"></span>
-                Contabilidad
-              </a>
-            </li>
-          </ul>
 
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-            <span>Saved reports</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-              <span data-feather="plus-circle" class="align-text-bottom"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/meses.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Meses
-              </a>
+
+          <li class="py-3"></li>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="../../../assets/home.png" style="width: 30px;" class="list__img">
+                    <a href="../../inicio.php" class="nav__link">Inicio</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/poliza.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Poliza
-              </a>
+
+            <li class="list__item">
+                <div class="list__button">
+                <img src="../../../assets/medico.svg" style="width: 30px;" class="list__img">
+                    <a href="../auxiliares/auxiliares.php" class="nav__link">Auxiliares</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/horas.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Horas
-              </a>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="../../../assets/patient.png" style="width: 30px;" class="list__img">
+                    <a href="pacientes.php" class="nav__link">Pacientes</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../gestion/deducido.php">
-                <span data-feather="file-text" class="align-text-bottom"></span>
-                Deducido
-              </a>
+            <li class="list__item">
+                <div class="list__button">
+                    <img src="../../../assets/stats.svg" style="width: 30px;" class="list__img">
+                    <a href="#" class="nav__link">Contabilidad</a>
+                </div>
+            </li>
+            <li class="list__item list__item--click">
+                <div class="list__button list__button--click">
+                    <img src="../../../assets/dashboard.svg" style="width: 30px;" class="list__img">
+                    <a href="#" class="nav__link">Parámetros</a>
+                    <img src="../../../assets/arrow.svg" class="list__arrow">
+                </div>
+
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="../gestion/meses.php" class="nav__link nav__link--inside">Meses</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="../gestion/poliza.php" class="nav__link nav__link--inside">Poliza</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="../gestion/horas.php" class="nav__link nav__link--inside">Horas</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="../gestion/deducido.php" class="nav__link nav__link--inside">Deducido</a>
+                    </li>
+                </ul>
+
             </li>
           </ul>
         </div>
@@ -195,20 +201,17 @@
 
         <div class="container">
           <form class="p-4" method="POST" action="../../controller/paciente/modificar_paciente.php">
-            <div class="table-responsive" id="tabla_responsiva">
-              <table class="table table-light" style="width: 2000px;">
-
+             <div class="table-responsive" style="position:sticky;">
+              <table class="table table-striped" style="width: 2000px;"  id="example">
                 <thead>
                   <tr>
                     <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Cédula</th>
                     <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Nombre</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Apellido</th>
                     <th class="text-center" style="width: 70px; color: #50b4fb;" scope="col">Sexo</th>
                     <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Dirección</th>
                     <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Barrio</th>
                     <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Zona</th>
                     <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">Teléfono</th>
-                    <th class="text-center" style="width: 200px; color: #50b4fb;" scope="col">EPS</th>
                     <th class="text-center" style="width: 150px; color: #50b4fb;" scope="col">Aseguradora</th>
                     <th class="text-center" style="width: 80px; color: #50b4fb;" scope="col">Tutela</th>
                     <th class="text-center" style="width: 80px; color: #50b4fb;" scope="col">Criterio</th>
@@ -220,19 +223,17 @@
                 <tbody>
                   <?php
                   include_once("../../model/conexion.php");
-                  $sql = $bd->query("SELECT * FROM paciente");
+                  $sql = $bd->query("SELECT * FROM paciente ORDER BY Nombre");
                   $rsql = $sql->fetchall(PDO::FETCH_OBJ);
                   foreach ($rsql as $datos) {
 
                     $cedula[] = $datos->Cédula;
                     $nombres[] = $datos->Nombre;
-                    $apellidos[] = $datos->Apellido;
                     $sexo[] = $datos->Sexo;
                     $direccion[] = $datos->Dirección;
                     $barrio[] = $datos->Barrio;
                     $zona[] = $datos->Zona;
                     $telefono[] = $datos->Teléfono;
-                    $eps[] = $datos->EPS;
                     $aseguradora[] = $datos->Aseguradora;
                     $tutela[] = $datos->Tutela;
                     $criterio[] = $datos->Criterio;
@@ -247,45 +248,27 @@
 
 
                   ?>
+                  
                     <tr>
-                      <th scope="row"><input type="text" class="form-control noscroll" name="cédula<?php echo $i ?>" autofocus value="<?php echo $cedula[$i] ?>"></th>
-                      <td><input type="text" class="form-control" name="nombre<?php echo $i ?>" autofocus value="<?php echo $nombres[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="apellido<?php echo $i ?>" autofocus value="<?php echo $apellidos[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="sexo<?php echo $i ?>" autofocus value="<?php echo $sexo[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="direccion<?php echo $i ?>" autofocus value="<?php echo $direccion[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="barrio<?php echo $i ?>" autofocus value="<?php echo $barrio[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="zona<?php echo $i ?>" autofocus value="<?php echo $zona[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="telefono<?php echo $i ?>" autofocus value="<?php echo $telefono[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="eps<?php echo $i ?>" autofocus value="<?php echo $eps[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="aseguradora<?php echo $i ?>" autofocus value="<?php echo $aseguradora[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="tutela<?php echo $i ?>" autofocus value="<?php echo $tutela[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="criterio<?php echo $i ?>" autofocus value="<?php echo $criterio[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="horas<?php echo $i ?>" autofocus value="<?php echo $horas[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="gams<?php echo $i ?>" autofocus value="<?php echo $gams[$i] ?>"></td>
-                      <td><input type="text" class="form-control" name="quimico<?php echo $i ?>" autofocus value="<?php echo $quimico[$i] ?>"></td>
+                      <th scope="row" class="prueba"><?php echo $cedula[$i] ?><input type="hidden" class="form-control noscroll" name="cédula<?php echo $i ?>" autofocus value="<?php echo $cedula[$i] ?>"></th>
+                      <td><?php echo $nombres[$i] ?></td>
+                      <td><?php $sexo[$i] ?><input type="text" class="form-control" name="sexo<?php echo $i ?>" autofocus value="<?php echo $sexo[$i] ?>"></td>
+                      <td><?php $direccion[$i] ?><input type="text" class="form-control" name="direccion<?php echo $i ?>" autofocus value="<?php echo $direccion[$i] ?>"></td>
+                      <td><?php $barrio[$i] ?><input type="text" class="form-control" name="barrio<?php echo $i ?>" autofocus value="<?php echo $barrio[$i] ?>"></td>
+                      <td><?php $zona[$i] ?><input type="text" class="form-control" name="zona<?php echo $i ?>" autofocus value="<?php echo $zona[$i] ?>"></td>
+                      <td><?php $telefono[$i] ?><input type="text" class="form-control" name="telefono<?php echo $i ?>" autofocus value="<?php echo $telefono[$i] ?>"></td>
+                      <td><?php $aseguradora[$i] ?><input type="text" class="form-control" name="aseguradora<?php echo $i ?>" autofocus value="<?php echo $aseguradora[$i] ?>"></td>
+                      <td><?php $tutela[$i] ?><input type="text" class="form-control" name="tutela<?php echo $i ?>" autofocus value="<?php echo $tutela[$i] ?>"></td>
+                      <td><?php $criterio[$i] ?><input type="text" class="form-control" name="criterio<?php echo $i ?>" autofocus value="<?php echo $criterio[$i] ?>"></td>
+                      <td><?php $horas[$i] ?><input type="text" class="form-control" name="horas<?php echo $i ?>" autofocus value="<?php echo $horas[$i] ?>"></td>
+                      <td><?php $gams[$i] ?><input type="text" class="form-control" name="gams<?php echo $i ?>" autofocus value="<?php echo $gams[$i] ?>"></td>
+                      <td><?php $quimico[$i] ?><input type="text" class="form-control" name="quimico<?php echo $i ?>" autofocus value="<?php echo $quimico[$i] ?>"></td>
                     </tr>
                   <?php
                   }
                   ?>
                 </tbody>
               </table>
-              <!--  </div>
-            <div class="form-footer">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                <input type="hidden" name="contador" value="<?php echo $contador ?>">
-                <input type="submit" class="btn text-white fs-5" style="background-color: #3b9dfb" value="Modificar">
-                <div class="btn-toolbar mb-2 mb-md-0">  
-        </form>
-                <div>
-                    <div>
-                    <button type="button" class="btn fs-5 text-white" style="background-color: #A1A0A4;" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="subir()">
-                        Asignar auxiliares
-                      </button>
-                    </div>
-                </div>                  
-                </div>
-
-                      -->
             </div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
               <input type="hidden" name="contador" value="<?php echo $contador ?>">
@@ -318,11 +301,11 @@
                   <option value=" ">Seleccione el paciente</option>
                   <?PHP
                   include_once("../../model/conexion.php");
-                  $model = $bd->query("SELECT * FROM paciente WHERE Horas > 0");
+                  $model = $bd->query("SELECT * FROM paciente WHERE Horas > 0 ORDER BY Nombre");
                   $modelo = $model->fetchAll(PDO::FETCH_OBJ);
                   foreach ($modelo as $datos_paciente) {
                   ?>
-                    <option value="<?php echo $datos_paciente->Horas . ',' . $datos_paciente->Cédula ?>"><?php echo $datos_paciente->Nombre . " " . $datos_paciente->Apellido ?></option>");
+                    <option value="<?php echo $datos_paciente->Horas . ',' . $datos_paciente->Cédula ?>"><?php echo $datos_paciente->Nombre?></option>");
                   <?php
                   }
                   ?>
@@ -410,11 +393,20 @@
   </div>
   </div>
 
-
+              <script src="../../main.js"></script>
+              <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+              <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+              <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+              <script>
+              $(document).ready(function () {
+                  $('#example').DataTable();
+              });
+              </script>
 
 
 
   <script type="text/javascript">
+  
     $('#mesesid').prop('disabled', 'disabled');
     
 
@@ -525,7 +517,14 @@
 
     }
   </script>
-
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+  <script>
+  $(document).ready(function () {
+      $('#example').DataTable();
+  });
+  </script>
 
 
 
