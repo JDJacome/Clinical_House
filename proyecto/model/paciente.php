@@ -12,10 +12,10 @@ class paciente{
 
     }
 
-    public function modificar_paciente($id,$nombre,$apellido,$sexo,$direccion,$barrio,$zona,$telefono,$eps,$aseguradora,$criterio,$tutela,$horas,$gams,$quimico){
+    public function modificar_paciente($id,$sexo,$direccion,$barrio,$zona,$telefono,$aseguradora,$criterio,$tutela,$horas,$gams,$quimico){
 
-        $sql = $GLOBALS['bd']->prepare("UPDATE `paciente` SET Nombre = ?, Apellido = ?, Sexo = ?,Dirección = ?, Barrio = ?, Zona = ?, Teléfono = ?, EPS = ?, Aseguradora = ?, Tutela = ?, Criterio = ?, Horas = ?, GAMS = ?, Químico = ? WHERE Cédula = ?");
-        $resul = $sql->execute([$nombre,$apellido,$sexo,$direccion,$barrio,$zona,$telefono,$eps,$aseguradora,$criterio,$tutela,$horas,$gams,$quimico,$id]);
+        $sql = $GLOBALS['bd']->prepare("UPDATE `paciente`  Sexo = ?,Dirección = ?, Barrio = ?, Zona = ?, Teléfono = ?, Aseguradora = ?, Tutela = ?, Criterio = ?, Horas = ?, GAMS = ?, Químico = ? WHERE Cédula = ?");
+        $resul = $sql->execute([$sexo,$direccion,$barrio,$zona,$telefono,$aseguradora,$tutela,$criterio,$horas,$gams,$quimico,$id]);
 
     }
 

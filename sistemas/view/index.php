@@ -99,7 +99,7 @@ z-index: -1;
             aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../index.html">Sign out</a>
+                <a class="nav-link px-3" href="../../index.html">Sign out</a>
             </div>
         </div>
     </header>

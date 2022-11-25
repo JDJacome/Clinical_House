@@ -190,6 +190,7 @@
 
             <div>
               <div>
+                <a href="../../usua.php"><button class="btn text-white fs-5" style="background-color: #50b4fb;">Añadir pacientes</button></a>
                 <a href="registrar_paciente.php"><button class="btn text-white fs-5" style="background-color: #50b4fb;">Añadir paciente</button></a>
               </div>
             </div>

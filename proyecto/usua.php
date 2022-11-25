@@ -32,6 +32,7 @@
    $sql = $bd->prepare("INSERT INTO `paciente` (`Cédula`, `Nombre`, `Sexo`, `Dirección`, `Barrio`, `Zona`, `Teléfono`, `Aseguradora`, `Tutela`, `Criterio`, `Horas`, `GAMS`, `Químico`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
    $rsql = $sql->execute([$cedula,$nombre,$sexo,$direccion,$barrio,$zona,$telefono,$aseguradora,$tutela,$criterio,$horas,$gams,$quimico]);
    
+   header("Location: view/pacientes/pacientes.php?mensaje=Registrados");
  }
  
 ?>
