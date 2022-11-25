@@ -157,7 +157,8 @@ z-index: -1;
                                 <th class="text-center" style="color: #50b4fb;">Aéra</th>
                                 <th class="text-center" style="color: #50b4fb;">Contacto</th>
                                 <th class="text-center" style="color: #50b4fb;">Responsable</th>
-                                <th class="text-center" style="color: #50b4fb;">Opciones</th>
+                                <th class="text-center" style="color: #50b4fb;">Fecha de Entrega</th>
+                                <th class="text-center" style="color: #50b4fb;">Fecha devuelto</th> 
                               </tr>
                             </thead>
                             <tbody>
@@ -181,7 +182,8 @@ z-index: -1;
                                   <th class="text-center"><?php echo $datos->Área ?></th>
                                   <th class="text-center"><?php echo $datos->Contacto ?></th>
                                   <th class="text-center"><?php echo $datos->Responsable ?></th>
-                                  <th ></th>
+                                  <th class="text-center"><input type="text" class="form-control" name="entrega<?php echo $i ?>" autofocus value="<?php echo $datos->Tipo_equipo ?>"></th>
+                                  <th class="text-center"><?php echo $datos->Fecha_devuelto ?></th>
                                 </tr>
                               <?php
                               }
