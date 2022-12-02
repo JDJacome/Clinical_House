@@ -12,6 +12,7 @@
     $marc = $_POST['marc'];
     $fabric = $_POST['fabric'];
     $n_serie = $_POST['n_serie'];
+    $c_equipo = $_POST['c_equipo'];
     $n_inventario = $_POST['n_inventario'];
     $area = $_POST['area'];
     $contac = $_POST['contac'];
@@ -29,7 +30,7 @@
     $imageninbinary = mysqli_escape_string($conexion,$imagenbinary);
     ECHO $imageninbinary;
     
-    $sql = "INSERT INTO `sistemas`.`equipos` (`Tipo_equipo`, `Descripción`, `Nombre_sede`, `Dirección`, `Teléfono`, `Mail`, `Nombre_equipo`, `Modelo`, `Marca`, `Fabricante`, `Número_serie`, `Número_inventario`,`Imagen` ,`Área`, `Contacto`, `Responsable`, `Adquisición`, `Frecuencia_mantenimiento`) Values ('$t_equipo','$desc','$n_sede','$direc',$tel_empresa,'$email','$n_equipo','$model','$marc','$fabric','$n_serie',$n_inventario,'$imageninbinary','$area',$contac,'$respon','$adquisición','$f_mantenimiento')";
+    $sql = "INSERT INTO `sistemas`.`equipos` (`Tipo_equipo`, `Descripción`, `Nombre_sede`, `Dirección`, `Teléfono`, `Mail`, `Nombre_equipo`, `Modelo`, `Marca`, `Fabricante`, `Número_serie`,`Código_equipo` ,`Número_inventario`,`Imagen` ,`Área`, `Contacto`, `Responsable`, `Adquisición`, `Frecuencia_mantenimiento`) Values ('$t_equipo','$desc','$n_sede','$direc',$tel_empresa,'$email','$n_equipo','$c_equipo','$model','$marc','$fabric','$n_serie',$n_inventario,'$imageninbinary','$area',$contac,'$respon','$adquisición','$f_mantenimiento')";
 
     $rsql = mysqli_query($conexion,$sql);
 ?>

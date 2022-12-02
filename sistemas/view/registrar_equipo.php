@@ -110,7 +110,7 @@
                         <li class="list__item">
                             <div class="list__button">
                                 <img src="../assets/home.png" style="width: 30px;" class="list__img">
-                                <a href="inicio.php" class="nav__link">Equipos</a>
+                                <a href="index.php" class="nav__link">Equipos</a>
                             </div>
                         </li>
 
@@ -192,7 +192,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <label for="fabricante" class="form-label">Código de equipo</label>
-                                        <input type="text" class="form-control" id="fabricante" name="fabric">
+                                        <input type="text" class="form-control" id="c_equipo" name="c_equipo">
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
